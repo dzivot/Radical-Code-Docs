@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Color Palette V3.1 — Radical Reading Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500&family=Dosis:wght@400;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --jade-shell: #018a75;
+  --jade-accent: #0B9C7E;
+  --dark-azure: #0c323d;
+  --gold-dark: #f5b53d;
+  --gold-light: #e5a930;
+  --cream-light: #f6f4ee;
+  --cream-dark: #f0eee6;
+  --warm-honey: #FEF0C4;
+  --text: #1a2b30;
+  --muted: #7a9099;
+  --border: #dde4e7;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream-light);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.header {
+  background: var(--jade-shell);
+  padding: 48px 32px 40px;
+  color: white;
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  background: var(--gold-light);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Zilla Slab', serif;
+  font-size: 20px;
+  color: var(--dark-azure);
+  font-weight: 500;
+}
+
+.brand-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+
+.header h1 {
+  font-family: 'Zilla Slab', serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.header p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+/* Navigation */
+.nav {
+  background: var(--dark-azure);
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+}
+
+.nav a {
+  display: block;
+  padding: 12px 0;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+  color: white;
+}
+
+.nav a.active {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold-light);
+}
+
+/* Main content */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 32px 80px;
+}
+
+/* Section */
+.section {
+  margin-bottom: 56px;
+}
+
+.section h2 {
+  font-family: 'Zilla Slab', serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--dark-azure);
+  line-height: 1.15;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.section h3 {
+  font-family: 'Zilla Slab', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 16px;
+  margin-top: 28px;
+}
+
+.section h3:first-child { margin-top: 0; }
+
+.section p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.section p:last-child { margin-bottom: 0; }
+
+/* Color swatches */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 28px 0;
+}
+
+.swatch {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.swatch-color {
+  height: 120px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 12px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.swatch-info {
+  padding: 16px;
+  background: white;
+}
+
+.swatch-name {
+  font-family: 'Zilla Slab', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.swatch-hex {
+  font-family: 'Outfit', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.swatch-usage {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Reference table */
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.ref-table th {
+  background: var(--cream-dark);
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 2px solid var(--border);
+}
+
+.ref-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ref-table tr:last-child td {
+  border-bottom: none;
+}
+
+.ref-table code {
+  font-family: 'Outfit', monospace;
+  background: var(--cream-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--dark-azure);
+}
+
+/* Callout */
+.callout {
+  background: var(--warm-honey);
+  border-left: 4px solid var(--gold-dark);
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin: 24px 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.callout strong {
+  color: var(--dark-azure);
+  font-weight: 600;
+}
+
+.callout em {
+  font-style: italic;
+  color: #7a4a00;
+}
+
+/* Rules list */
+.rules-list {
+  list-style: none;
+  margin: 24px 0;
+  padding: 0;
+}
+
+.rules-list li {
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: white;
+  border-left: 3px solid var(--border);
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.rules-list li em {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.rules-list li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Footer */
+.footer {
+  background: var(--jade-shell);
+  color: white;
+  padding: 32px 32px 24px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.footer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer p {
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 8px;
+}
+
+.footer p:last-child {
+  margin-bottom: 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.back-link:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+@media (max-width: 640px) {
+  .header { padding: 32px 20px 28px; }
+  .main { padding: 32px 20px 60px; }
+  .nav-inner { gap: 12px; }
+  .nav a { padding: 10px 0; font-size: 11px; }
+  .swatch-grid { grid-template-columns: 1fr; }
+  .section h2 { font-size: 24px; }
+  .ref-table { font-size: 13px; }
+  .ref-table th, .ref-table td { padding: 10px 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="brand-mark">R</div>
+      <div class="brand-name">Radical Reading Co.</div>
+    </div>
+    <h1>Brand Color Palette</h1>
+    <p>Version 3.1 · May 2026 · Complete colour system documentation for all brand applications</p>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a href="#gold" class="active">Gold System</a>
+    <a href="#schemes">Section Schemes</a>
+    <a href="#rules">Adjacency Rules</a>
+    <a href="#patterns">Page Patterns</a>
+    <a href="#reference">Quick Reference</a>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- GOLD SYSTEM -->
+  <div class="section" id="gold">
+    <h2>Gold System — Dual-Surface Design</h2>
+    <p>A single gold value cannot be optimised for both dark and light backgrounds simultaneously. The brand maintains two gold values, each designated for a specific surface context. This is standard practice in professional brand systems.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #f5b53d;">Gold Dark</div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gold — Dark Surfaces</div>
+          <div class="swatch-hex">#f5b53d</div>
+          <div class="swatch-usage">Logo on dark azure, jade header/footer, jade accent sections</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #e5a930;">Gold Light</div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gold — Light Surfaces</div>
+          <div class="swatch-hex">#e5a930</div>
+          <div class="swatch-usage">Logo on cream, warm honey, white backgrounds. Social assets.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Usage Rules</h3>
+    <ul class="rules-list">
+      <li><strong>In site UI:</strong> Gold always means <code>#f5b53d</code> — the site operates primarily on dark surfaces (jade header/footer, dark azure sections) where Gold Dark is correct.</li>
+      <li><strong>In social assets, print, and documents:</strong> Use Gold Light <code>#e5a930</code> where the logo sits on cream or white backgrounds.</li>
+      <li><strong>Accessibility:</strong> Never use gold as link or body text colour on cream backgrounds — contrast ratio fails WCAG AA. Use Jade Logo for links on cream.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION SCHEMES -->
+  <div class="section" id="schemes">
+    <h2>Section Schemes (S1–S6)</h2>
+    <p>Six colour schemes structure the entire page architecture. Each scheme is designed for specific contexts and must respect adjacency rules for visual coherence.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background: #f6f4ee; color: var(--text); text-shadow: none;">S1</div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cream Light</div>
+          <div class="swatch-hex">#f6f4ee</div>
+          <div class="swatch-usage">Primary content surface. Most-used scheme across main sections.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #f0eee6; color: var(--text); text-shadow: none;">S2</div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cream Dark</div>
+          <div class="swatch-hex">#f0eee6</div>
+          <div class="swatch-usage">Alternating content sections. Rhythm pair with S1.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #0c323d;">S3</div>
+        <div class="swatch-info">
+          <div class="swatch-name">Dark Azure</div>
+          <div class="swatch-hex">#0c323d</div>
+          <div class="swatch-usage">Hero sections, authority content, Lark bio, cart drawer. Most versatile.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #018a75;">S4</div>
+        <div class="swatch-info">
+          <div class="swatch-name">Jade Shell</div>
+          <div class="swatch-hex">#018a75</div>
+          <div class="swatch-usage">Header, footer, secondary page title sections. Brand boundary.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #0B9C7E;">S5</div>
+        <div class="swatch-info">
+          <div class="swatch-name">Jade Accent</div>
+          <div class="swatch-hex">#0B9C7E</div>
+          <div class="swatch-usage">Interior reverse sections. "Window is now" moments. Interior only.</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background: #FEF0C4; color: var(--text); text-shadow: none;">S6</div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warm Honey</div>
+          <div class="swatch-hex">#FEF0C4</div>
+          <div class="swatch-usage">Callout panels and highlight boxes within cream sections.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADJACENCY RULES -->
+  <div class="section" id="rules">
+    <h2>Section Sequencing Rules</h2>
+    <p>The jade header/footer architecture creates hard constraints that must be respected in every page layout. Violating these creates visual collisions that undermine palette coherence.</p>
+
+    <h3>The Jade Adjacency Rule</h3>
+    <p>Jade Shell (#018a75) and Jade Accent (#0B9C7E) are too close in value and hue to sit directly adjacent — they read as one muddy block rather than two distinct sections.</p>
+
+    <div class="callout">
+      <strong>⚠ Critical:</strong> Jade Accent sections must <em>never</em> be placed directly below the header, directly above the footer, or adjacent to any other jade surface. Jade Accent sections must always be sandwiched between cream, dark cream, or dark azure surfaces.
+    </div>
+
+    <h3>Valid Adjacency Reference</h3>
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Valid Schemes</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Header</td>
+          <td><code>S4</code> Jade Shell</td>
+          <td>Always the top surface. Brand shell announcement.</td>
+        </tr>
+        <tr>
+          <td>Entry section</td>
+          <td><code>S3</code> or <code>S1/S2</code></td>
+          <td>Must be dark azure OR cream. Never jade accent.</td>
+        </tr>
+        <tr>
+          <td>Interior sections</td>
+          <td><code>S1/S2/S3/S5/S6</code></td>
+          <td>Any scheme except jade shell. Jade accent valid here.</td>
+        </tr>
+        <tr>
+          <td>Exit section</td>
+          <td><code>S1/S2</code> or <code>S3</code></td>
+          <td>Must be cream, dark cream, or dark azure. Never jade accent.</td>
+        </tr>
+        <tr>
+          <td>Footer</td>
+          <td><code>S4</code> Jade Shell</td>
+          <td>Always the bottom surface. Brand shell close.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PAGE PATTERNS -->
+  <div class="section" id="patterns">
+    <h2>Recommended Full-Page Rhythm</h2>
+    <p>This sequence creates strong warm-clinical contrast throughout a full page:</p>
+
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Scheme</th>
+          <th>Character</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Header</td>
+          <td><code>S4</code> Jade Shell</td>
+          <td>Brand authority entry</td>
+        </tr>
+        <tr>
+          <td>Hero / First section</td>
+          <td><code>S3</code> Dark Azure</td>
+          <td>Immediate clinical weight. Dramatic open.</td>
+        </tr>
+        <tr>
+          <td>Content section A</td>
+          <td><code>S1</code> Cream Light</td>
+          <td>Living room warmth. Primary content surface.</td>
+        </tr>
+        <tr>
+          <td>Content section B</td>
+          <td><code>S2</code> Cream Dark</td>
+          <td>Rhythm alternation. Subtle differentiation.</td>
+        </tr>
+        <tr>
+          <td>Feature / Reverse</td>
+          <td><code>S5</code> Jade Accent</td>
+          <td>Brand energy moment. Interior only.</td>
+        </tr>
+        <tr>
+          <td>Content section C</td>
+          <td><code>S1</code> Cream Light</td>
+          <td>Return to warmth after jade accent.</td>
+        </tr>
+        <tr>
+          <td>Authority close</td>
+          <td><code>S3</code> Dark Azure</td>
+          <td>Clinical close. Lark bio, credentials, CTA.</td>
+        </tr>
+        <tr>
+          <td>Footer</td>
+          <td><code>S4</code> Jade Shell</td>
+          <td>Brand shell close.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Special Pattern: Secondary Pages</h3>
+    <p>Pages without a hero image (blog posts, policy pages, secondary content) use jade page title treatment. The jade shell header flows directly into a jade page title section, creating unified brand entry before content begins.</p>
+
+    <h3>Special Pattern: Blog Post Close</h3>
+    <p>Each blog post closes with a Lark author bio section before the footer on <code>S3</code> Dark Azure. The clinical authority reading is balanced by Lark's photo and personal copy, with a gold link as the action signal.</p>
+  </div>
+
+  <!-- QUICK REFERENCE -->
+  <div class="section" id="reference">
+    <h2>Quick Reference — All Colours</h2>
+
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Hex</th>
+          <th>Used For</th>
+          <th>Rationale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gold Dark</strong></td>
+          <td><code>#f5b53d</code></td>
+          <td>Dark surfaces (header, footer, dark azure)</td>
+          <td>Lighter, more yellow. Vibrant and warm. Strong contrast on dark surfaces.</td>
+        </tr>
+        <tr>
+          <td><strong>Gold Light</strong></td>
+          <td><code>#e5a930</code></td>
+          <td>Light surfaces (cream, white, documents)</td>
+          <td>Deeper, more amber. Better contrast on light backgrounds.</td>
+        </tr>
+        <tr>
+          <td><strong>Cream Light (S1)</strong></td>
+          <td><code>#f6f4ee</code></td>
+          <td>Primary content sections</td>
+          <td>Most-used surface across all pages. Living room warmth.</td>
+        </tr>
+        <tr>
+          <td><strong>Cream Dark (S2)</strong></td>
+          <td><code>#f0eee6</code></td>
+          <td>Alternating content sections</td>
+          <td>Rhythm pair with S1. Subtle visual differentiation.</td>
+        </tr>
+        <tr>
+          <td><strong>Dark Azure (S3)</strong></td>
+          <td><code>#0c323d</code></td>
+          <td>Heroes, authority content, Lark bio, cart</td>
+          <td>Most versatile. Works as opener and closer.</td>
+        </tr>
+        <tr>
+          <td><strong>Jade Shell (S4)</strong></td>
+          <td><code>#018a75</code></td>
+          <td>Header, footer, page titles</td>
+          <td>Brand boundary. Sets the container.</td>
+        </tr>
+        <tr>
+          <td><strong>Jade Accent (S5)</strong></td>
+          <td><code>#0B9C7E</code></td>
+          <td>Interior sections only</td>
+          <td>Brand energy. Never adjacent to jade shell.</td>
+        </tr>
+        <tr>
+          <td><strong>Warm Honey (S6)</strong></td>
+          <td><code>#FEF0C4</code></td>
+          <td>Callout boxes, highlight panels</td>
+          <td>Tint system. Use for highlights within cream sections.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <a href="index.html" class="back-link">← Back to Index</a>
+    <p>Brand Color Palette V3.1 · May 2026</p>
+    <p>Supplements Colour Palette V3.0. All V3.0 rules apply. This document is the definitive guide to colour usage across all brand applications.</p>
+    <p style="margin-top: 16px; font-size: 11px; opacity: 0.5;">Last updated: May 22, 2026</p>
+  </div>
+</div>
+
+</body>
+</html>

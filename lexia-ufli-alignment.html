@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lexia Core5 × UFLI Foundations — Alignment Reference</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:        #14141f;
+      --ink-mid:    #4a4a66;
+      --ink-soft:   #7a7a99;
+      --border:     #dddde8;
+      --surface:    #f5f5fa;
+      --white:      #ffffff;
+
+      /* Level band colors — muted, printable */
+      --prek-bg:    #fef6e4; --prek-fg:    #7a4a00;
+      --k-bg:       #e8f5ee; --k-fg:       #1a6040;
+      --g1-bg:      #e4eef8; --g1-fg:      #0a4a90;
+      --g2-bg:      #ede8f8; --g2-fg:      #4a1a90;
+      --g3-bg:      #fdeee8; --g3-fg:      #882800;
+      --g4-bg:      #e4f4f4; --g4-fg:      #0a6060;
+      --g5-bg:      #f8e8ee; --g5-fg:      #880030;
+
+      /* Strand colors */
+      --pa:  #c83020;
+      --ph:  #1850b0;
+      --sa:  #5820a0;
+      --fl:  #905000;
+      --vc:  #0a7050;
+      --cp:  #204878;
+
+      /* Strength */
+      --s3-bg: #daf0e4; --s3-fg: #0a6030;
+      --s2-bg: #ece4f8; --s2-fg: #4a1a90;
+      --s1-bg: #f8f0d0; --s1-fg: #706000;
+      --s0-bg: #eeeeee; --s0-fg: #606070;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--ink);
+      color: white;
+      padding: 28px 36px 24px;
+    }
+    .page-header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      margin-bottom: 4px;
+    }
+    .page-header .sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .meta-item { font-size: 11px; color: rgba(255,255,255,0.45); }
+    .meta-item strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+
+    /* ── PREAMBLE / LEGEND ── */
+    .preamble {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      padding: 20px 36px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .legend-block { flex: 1; min-width: 180px; }
+    .legend-block h3 {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      color: var(--ink-soft);
+      margin-bottom: 9px;
+    }
+    .legend-items { display: flex; flex-direction: column; gap: 5px; }
+    .legend-item { display: flex; align-items: center; gap: 8px; font-size: 11.5px; color: var(--ink-mid); }
+
+    .disclaimer {
+      flex: 2;
+      min-width: 260px;
+      background: #fffce8;
+      border: 1px solid #d8c040;
+      border-radius: 6px;
+      padding: 12px 15px;
+      font-size: 11.5px;
+      color: #4a3a00;
+      line-height: 1.6;
+    }
+    .disclaimer strong {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #6a5000;
+      margin-bottom: 5px;
+    }
+
+    /* ── BADGE / PILL COMPONENTS ── */
+    .strand {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      padding: 2px 7px;
+      border-radius: 20px;
+      color: white;
+      white-space: nowrap;
+    }
+    .s-PA { background: var(--pa); }
+    .s-PH { background: var(--ph); }
+    .s-SA { background: var(--sa); }
+    .s-FL { background: var(--fl); }
+    .s-VC { background: var(--vc); }
+    .s-CP { background: var(--cp); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .b3 { background: var(--s3-bg); color: var(--s3-fg); }
+    .b2 { background: var(--s2-bg); color: var(--s2-fg); }
+    .b1 { background: var(--s1-bg); color: var(--s1-fg); }
+    .b0 { background: var(--s0-bg); color: var(--s0-fg); }
+
+    .tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-right: 3px;
+      vertical-align: middle;
+    }
+    .tag-sup  { background: #ede0ff; color: #5010a0; }
+    .tag-ver  { background: #fff0d8; color: #803010; }
+
+    /* ── TABLE WRAPPER ── */
+    .table-wrap { padding: 24px 36px 60px; overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 12.5px;
+    }
+
+    /* Column widths */
+    col.c-level  { width: 100px; }
+    col.c-strand { width: 60px; }
+    col.c-lskill { width: 190px; }
+    col.c-lessons{ width: 130px; }
+    col.c-ufli   { width: 200px; }
+    col.c-str    { width: 80px; }
+    col.c-notes  { }
+
+    thead th {
+      background: var(--ink);
+      color: rgba(255,255,255,0.85);
+      padding: 10px 13px;
+      text-align: left;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      white-space: nowrap;
+    }
+
+    /* Band rows */
+    tr.band td {
+      padding: 8px 14px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      border-top: 3px solid rgba(0,0,0,0.06);
+    }
+    tr.band-prek td { background: var(--prek-bg); color: var(--prek-fg); }
+    tr.band-k    td { background: var(--k-bg);    color: var(--k-fg);    }
+    tr.band-g1   td { background: var(--g1-bg);   color: var(--g1-fg);   }
+    tr.band-g2   td { background: var(--g2-bg);   color: var(--g2-fg);   }
+    tr.band-g3   td { background: var(--g3-bg);   color: var(--g3-fg);   }
+    tr.band-g4   td { background: var(--g4-bg);   color: var(--g4-fg);   }
+    tr.band-g5   td { background: var(--g5-bg);   color: var(--g5-fg);   }
+
+    /* Data rows */
+    tr.row td {
+      padding: 9px 13px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr.row:last-child td { border-bottom: none; }
+    tr.row:hover td { background: #f4f4fc; }
+
+    .level-cell {
+      font-size: 11.5px;
+      color: var(--ink-mid);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .lx-skill { font-weight: 500; line-height: 1.4; }
+    .lx-sub   { display: block; font-size: 11px; color: var(--ink-soft); font-weight: 400; margin-top: 2px; }
+
+    .ufli-lesson {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .ufli-lesson.approx { color: var(--ink-mid); }
+    .ufli-none { color: var(--ink-soft); font-style: italic; font-size: 12px; }
+
+    .ufli-skill { line-height: 1.4; }
+    .ufli-sub   { display: block; font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+
+    .notes { font-size: 11.5px; color: var(--ink-mid); line-height: 1.55; }
+
+    @media print {
+      body { background: white; }
+      .page-header { background: #14141f !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .table-wrap { padding: 16px 0 40px; }
+      tr.row:hover td { background: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Lexia Core5 × UFLI Foundations &mdash; Alignment Reference</h1>
+  <div class="sub">Internal resource for session planning &middot; Radical Reading Co. &middot; For tutor use</div>
+  <div class="meta-row">
+    <div class="meta-item"><strong>Source A:</strong> Lexia Core5 Scope &amp; Sequence, 21-Level (2020)</div>
+    <div class="meta-item"><strong>Source B:</strong> UFLI Foundations, Univ. of Florida Literacy Institute</div>
+    <div class="meta-item"><strong>Status:</strong> v1.0 Draft &mdash; UFLI lesson numbers are approximate; verify against manual</div>
+    <div class="meta-item"><strong>Next step:</strong> Lark to annotate specific Lexia activity names from educator portal</div>
+  </div>
+</div>
+
+<div class="preamble">
+  <div class="legend-block">
+    <h3>Alignment Strength</h3>
+    <div class="legend-items">
+      <div class="legend-item"><span class="badge b3">●●●&nbsp;Strong</span> Direct skill match — use UFLI lesson as primary resource</div>
+      <div class="legend-item"><span class="badge b2">●●○&nbsp;Partial</span> Concept covered — may need supplementation</div>
+      <div class="legend-item"><span class="badge b1">●○○&nbsp;Limited</span> Tangentially addressed — UFLI is supportive only</div>
+      <div class="legend-item"><span class="badge b0">&nbsp;—&nbsp;&nbsp;None&nbsp;</span> No UFLI equivalent — use alternate resource</div>
+    </div>
+  </div>
+  <div class="legend-block">
+    <h3>Skill Strands</h3>
+    <div class="legend-items">
+      <div class="legend-item"><span class="strand s-PA">PA</span> Phonological Awareness</div>
+      <div class="legend-item"><span class="strand s-PH">PH</span> Phonics</div>
+      <div class="legend-item"><span class="strand s-SA">SA</span> Structural Analysis</div>
+      <div class="legend-item"><span class="strand s-FL">FL</span> Automaticity / Fluency</div>
+      <div class="legend-item"><span class="strand s-VC">VC</span> Vocabulary</div>
+      <div class="legend-item"><span class="strand s-CP">CP</span> Comprehension</div>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <strong>⚠ Working Draft — Verify Before Clinical Use</strong>
+    UFLI lesson numbers marked <strong>~</strong> are approximate, based on the published UFLI Foundations scope and sequence.
+    Confirm exact lesson numbers against your UFLI Foundations manual before using with students.
+    The Lexia S&amp;S provides <em>skill bands per level group</em>, not individual activity names within each level —
+    Lark should annotate the "Lexia Activity" column from the educator portal as a v2 step.
+    <br><br>
+    <strong>Note on strands:</strong> Vocabulary and Comprehension strands in Lexia have <em>no UFLI equivalent by design</em> —
+    UFLI Foundations is a phonics/decoding program. All VC and CP rows require separate supplemental resources.
+  </div>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <colgroup>
+      <col class="c-level"><col class="c-strand"><col class="c-lskill">
+      <col class="c-lessons"><col class="c-ufli"><col class="c-str"><col class="c-notes">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Lexia Level(s)</th>
+        <th>Strand</th>
+        <th>Lexia Skill</th>
+        <th>UFLI Lesson(s)</th>
+        <th>UFLI Skill Focus</th>
+        <th>Strength</th>
+        <th>Tutor Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- ══ LEVEL 1: PRE-K ══ -->
+      <tr class="band band-prek">
+        <td colspan="7">LEVEL 1 &nbsp;&middot;&nbsp; Pre-K &nbsp;&middot;&nbsp; <em>A Picnic in the Woods</em></td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Level 1</td>
+        <td><span class="strand s-PA">PA</span></td>
+        <td class="lx-skill">Rhyming</td>
+        <td class="ufli-lesson approx">~Pre-lessons</td>
+        <td class="ufli-skill">Phonological awareness warm-ups<span class="ufli-sub">Rhyme identification &amp; production in PA routine</span></td>
+        <td><span class="badge b1">●○○</span></td>
+        <td class="notes">No dedicated UFLI rhyming lesson. Use UFLI PA warm-up cards and oral rhyme games as supplemental practice. Rhyming is prerequisite PA before Lesson 1.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Level 1</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Upper &amp; Lower Case Letters<span class="lx-sub">Visual matching</span></td>
+        <td class="ufli-lesson approx">~Pre-lessons, L. 1–7</td>
+        <td class="ufli-skill">Letter identification &amp; naming<span class="ufli-sub">Upper/lower case introduced in early lessons</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">UFLI introduces letters in early lessons; explicit upper/lower visual matching is part of pre-lesson routines. Use UFLI alphabet/sound-spelling cards.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Level 1</td>
+        <td><span class="strand s-FL">FL</span></td>
+        <td class="lx-skill">Automaticity with Foundational Concepts</td>
+        <td class="ufli-lesson">All lessons</td>
+        <td class="ufli-skill">Daily review structure<span class="ufli-sub">Every UFLI lesson begins with cumulative review</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">Automaticity is built through UFLI's review-before-new-learning structure. Not a single lesson — reinforce across all sessions.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Level 1</td>
+        <td><span class="strand s-VC">VC</span></td>
+        <td class="lx-skill">Basic Categories</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Use picture sorting, oral categorization games, and concept vocabulary activities outside UFLI.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Level 1</td>
+        <td><span class="strand s-CP">CP</span></td>
+        <td class="lx-skill">Listening Comprehension · Picturing · Print Concepts</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Print concepts and listening comprehension require shared reading and read-aloud routines outside UFLI.</td>
+      </tr>
+
+      <!-- ══ LEVELS 2–5: KINDERGARTEN ══ -->
+      <tr class="band band-k">
+        <td colspan="7">LEVELS 2–5 &nbsp;&middot;&nbsp; Kindergarten &nbsp;&middot;&nbsp; <em>A Day at the Beach &middot; A Snow Day in the City &middot; The Amazon Rainforest &middot; The Scottish Cliffs</em></td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 2–5</td>
+        <td><span class="strand s-PA">PA</span></td>
+        <td class="lx-skill">Blending &amp; Segmenting Syllables &amp; Sounds</td>
+        <td class="ufli-lesson">All lessons (PA warm-up)</td>
+        <td class="ufli-skill">Phoneme blending &amp; segmenting<span class="ufli-sub">Daily warm-up routine in every UFLI lesson</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Direct alignment. UFLI's phoneme warm-up routine targets blending and segmenting every session. Use Elkonin boxes for concrete, multisensory support.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 2–5</td>
+        <td><span class="strand s-PA">PA</span></td>
+        <td class="lx-skill">Beginning Sounds · Ending Sounds</td>
+        <td class="ufli-lesson approx">~L. 1–14 (PA warm-up)</td>
+        <td class="ufli-skill">Phoneme isolation<span class="ufli-sub">Initial and final phoneme identification</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">PA warm-up in early UFLI lessons explicitly targets first and last sound isolation. Pair with Elkonin boxes (tap first/last box only).</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 2–5</td>
+        <td><span class="strand s-PA">PA</span></td>
+        <td class="lx-skill">Short &amp; Long Vowel Sounds · Manipulating Sounds</td>
+        <td class="ufli-lesson">All lessons (PA warm-up)</td>
+        <td class="ufli-skill">Vowel sound discrimination &amp; phoneme substitution<span class="ufli-sub">Integrated throughout PA warm-up routine</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">Vowel discrimination is built through word reading practice. Phoneme substitution (e.g., "change /a/ to /i/ in 'cat' — what word?") is explicit in UFLI's PA routine.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 2–5</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Letter-Sound Correspondence<span class="lx-sub">Individual consonants and short vowels</span></td>
+        <td class="ufli-lesson approx">~L. 1–7</td>
+        <td class="ufli-skill">Single letter-sound correspondences<span class="ufli-sub">Consonants + short vowels a, i, o, u, e</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Strong, direct alignment. UFLI Lessons 1–7 build letter-sound knowledge systematically. Use UFLI sound-spelling cards for each letter introduced.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 2–5</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Letter Names · Alphabetizing</td>
+        <td class="ufli-lesson approx">~Pre-lessons, L. 1–7</td>
+        <td class="ufli-skill">Letter naming &amp; alphabet knowledge<span class="ufli-sub">Embedded in early lessons; no standalone alphabetizing lesson</span></td>
+        <td><span class="badge b1">●○○</span></td>
+        <td class="notes"><span class="tag tag-ver">Verify</span>UFLI doesn't have a standalone alphabetizing lesson. Reinforce with alphabet strips and separate sequencing activities alongside UFLI.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 2–5</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Short Vowels in CVC Words<span class="lx-sub">All five short vowels</span></td>
+        <td class="ufli-lesson approx">~L. 8–14</td>
+        <td class="ufli-skill">CVC decoding &amp; encoding — short a, i, o, u, e<span class="ufli-sub">One vowel introduced per lesson with word lists and connected text</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Strong alignment. If a student is stuck on a specific short vowel, pull the corresponding UFLI lesson (e.g., short /e/ confusion → UFLI Lesson ~13–14). Use Elkonin boxes for encoding practice.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 2–5</td>
+        <td><span class="strand s-FL">FL</span></td>
+        <td class="lx-skill">High-Frequency Sight Words<span class="lx-sub">Automaticity with foundational concepts</span></td>
+        <td class="ufli-lesson">Every lesson (Trick Words)</td>
+        <td class="ufli-skill">Irregular "trick words"<span class="ufli-sub">3–4 new words introduced per lesson; cumulative review throughout</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">UFLI calls these "trick words" and introduces a small set each lesson with explicit irregular pattern explanation. Directly mirrors Lexia's HF word focus.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 2–5</td>
+        <td><span class="strand s-VC">VC</span></td>
+        <td class="lx-skill">Vocabulary Concepts · Advanced Adjectives</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Vocabulary instruction is outside UFLI's scope. Use picture word walls, oral language routines, and explicit concept vocabulary activities.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 2–5</td>
+        <td><span class="strand s-CP">CP</span></td>
+        <td class="lx-skill">Listening Comprehension · Picturing · Comprehension Strategies</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Use read-alouds with think-aloud strategies and narrative retelling outside UFLI sessions.</td>
+      </tr>
+
+      <!-- ══ LEVELS 6–9: GRADE 1 ══ -->
+      <tr class="band band-g1">
+        <td colspan="7">LEVELS 6–9 &nbsp;&middot;&nbsp; Grade 1 &nbsp;&middot;&nbsp; <em>A Day in Paris &middot; The African Serengeti &middot; The South Pole &middot; The Egyptian Desert</em></td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-PA">PA</span></td>
+        <td class="lx-skill">Manipulating Sounds (substitutions)<span class="lx-sub">Short &amp; long vowel discrimination</span></td>
+        <td class="ufli-lesson">All lessons (PA warm-up)</td>
+        <td class="ufli-skill">Phoneme substitution<span class="ufli-sub">Swap vowels/consonants to make new words; daily routine</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">PA warm-up in every UFLI lesson. Phoneme substitution ("change /a/ to /e/ in 'hat'") is explicit. Increase vowel complexity as lessons progress (short to long vowels).</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Digraphs<span class="lx-sub">sh, ch, th, wh, ck, qu, ng</span></td>
+        <td class="ufli-lesson approx">~L. 15–22</td>
+        <td class="ufli-skill">Consonant digraphs — decoding &amp; encoding<span class="ufli-sub">sh (L.15), ch (L.16), th (L.17), wh (L.18), ck (L.19), qu (L.20), ng (L.21–22)</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Strong alignment. UFLI dedicates one lesson per digraph. When a student stalls on a specific digraph in Lexia, pull the matching UFLI lesson for explicit re-instruction + decodable text practice.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Consonant Blends<span class="lx-sub">Initial (l-, r-, s-blends) &amp; final blends — note: implicit in Lexia S&amp;S</span></td>
+        <td class="ufli-lesson approx">~L. 23–34</td>
+        <td class="ufli-skill">Initial and final consonant clusters<span class="ufli-sub">l-blends (L.23–24), r-blends (L.25–26), s-blends (L.27–29), final blends (L.30–34)</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes"><span class="tag tag-ver">Verify</span>Blends are not explicitly named in the Lexia S&amp;S overview but are a core Grade 1 phonics skill taught in this range. Pull the specific blend cluster causing breakdown (e.g., student dropping /l/ in "bl-" → UFLI L.~23).</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Welded / Glued Sounds<span class="lx-sub">-all, -am, -an; -ang/-ing/-ong/-ung; -ank/-ink/-onk/-unk</span></td>
+        <td class="ufli-lesson approx">~L. 35–40</td>
+        <td class="ufli-skill">Welded (glued) sound patterns<span class="ufli-sub">-all, -am, -an (L.35–36); nasal -ng patterns (L.37–38); nasal -nk patterns (L.39–40)</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Strong alignment. UFLI explicitly teaches these as "welded sounds" (phonemes that blend so tightly they must be learned as units). Use UFLI word lists and Elkonin boxes with the nasal patterns marked.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Easily Reversible Letters<span class="lx-sub">b, d, p discrimination</span></td>
+        <td class="ufli-lesson approx">~L. 1–7</td>
+        <td class="ufli-skill">Letter formation &amp; discrimination<span class="ufli-sub">Embedded in letter introduction; not a standalone lesson</span></td>
+        <td><span class="badge b1">●○○</span></td>
+        <td class="notes">No dedicated UFLI b/d/p reversal lesson. Use verbal cues ("b is a bat then a ball"), tactile letter formation, and UFLI sound-spelling card visual exposure. This is primarily an automaticity/orthographic mapping issue.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Word Families<span class="lx-sub">Rime-based patterns</span></td>
+        <td class="ufli-lesson approx">~L. 8–22</td>
+        <td class="ufli-skill">Rime patterns within CVC and digraph words<span class="ufli-sub">-at, -an, -it, -op, -ish, etc. — implicit in UFLI word work</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">UFLI doesn't use the term "word families" but builds them through CVC and digraph word lists. The UFLI word sort activity can be used to explicitly highlight rime patterns for students who benefit from this lens.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Contractions</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Contractions are not a phonics focus in UFLI Foundations. Address as a spelling convention / sight word activity. Contractions appear in decodable texts and can be noted and discussed in context.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Syllable Type: Closed<span class="lx-sub">CVC, CVCC — short vowel</span></td>
+        <td class="ufli-lesson approx">~L. 1–22 (implicit); ~L. 91–96 (named explicitly)</td>
+        <td class="ufli-skill">Closed syllable pattern<span class="ufli-sub">Foundation of all early UFLI lessons; named in multisyllabic section</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Closed syllable IS the structural basis of all UFLI Lessons 1–22. The term is explicitly introduced in the multisyllabic section (~L. 91–96). For decoding breakdown: reinforce via any early UFLI lesson with word card work.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Syllable Type: Open<span class="lx-sub">CV — long vowel</span></td>
+        <td class="ufli-lesson approx">~L. 91–96</td>
+        <td class="ufli-skill">Open syllable (CV → long vowel sound)<span class="ufli-sub">Introduced in multisyllabic word reading section</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">Open syllable is introduced in UFLI's multisyllabic section. For students stuck on open syllables at this level, jump ahead to UFLI L.~91–96 for explicit instruction and contrast with closed syllable.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Syllable Type: Silent e (CVCe)<span class="lx-sub">Long vowel with final silent e</span></td>
+        <td class="ufli-lesson approx">~L. 41–50</td>
+        <td class="ufli-skill">Magic/silent e — long vowel CVCe patterns<span class="ufli-sub">a_e (L.41–42), i_e (L.43–44), o_e (L.45–46), u_e (L.47–48), e_e (L.49)</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Strong alignment. UFLI dedicates 1–2 lessons per CVCe vowel. If a student stalls on a specific long vowel (e.g., i_e), pull that UFLI lesson for explicit re-instruction with decodable text and word work.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-FL">FL</span></td>
+        <td class="lx-skill">High-Frequency Sight Words · Sentence Structure</td>
+        <td class="ufli-lesson">Every lesson (Trick Words)</td>
+        <td class="ufli-skill">Cumulative trick word bank<span class="ufli-sub">Running list of ~200+ irregular words by program end</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">UFLI trick word list closely mirrors common HF word lists (Fry, Dolch). Sentence structure is supported through UFLI connected decodable text reading at each level.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-VC">VC</span></td>
+        <td class="lx-skill">Categorizing &amp; Associations · Multiple Meaning Words · Parts of Speech</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Vocabulary instruction is outside UFLI's scope. Use semantic mapping, word sorts by meaning, and explicit vocabulary routines from a dedicated program.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 6–9</td>
+        <td><span class="strand s-CP">CP</span></td>
+        <td class="lx-skill">Listening &amp; Reading Comprehension · Text Structure · Comprehension Strategies</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>UFLI decodable texts can support basic retelling/sequencing, but structured comprehension strategy instruction requires separate resources.</td>
+      </tr>
+
+      <!-- ══ LEVELS 10–12: GRADE 2 ══ -->
+      <tr class="band band-g2">
+        <td colspan="7">LEVELS 10–12 &nbsp;&middot;&nbsp; Grade 2 &nbsp;&middot;&nbsp; <em>An English Garden &middot; The Swiss Alps &middot; A Russian Circus</em></td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-PA">PA</span></td>
+        <td class="lx-skill">Manipulating Sounds (additions &amp; deletions)</td>
+        <td class="ufli-lesson">All lessons (PA warm-up)</td>
+        <td class="ufli-skill">Phoneme addition &amp; deletion<span class="ufli-sub">Advanced manipulation in PA warm-up routine</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">Use the PA warm-up of any UFLI lesson to practice phoneme addition ("say 'cat,' add /s/ to the end") and deletion ("say 'stop' without /s/"). Complexity scales with the lesson's phonics focus.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Vowel Combinations (Vowel Teams)<span class="lx-sub">ai/ay, ee/ea, oa/ow, oo, ie/igh, ue/ew</span></td>
+        <td class="ufli-lesson approx">~L. 51–68</td>
+        <td class="ufli-skill">Long vowel digraphs &amp; teams<span class="ufli-sub">ai/ay (~L.51–53), ee/ea (~L.54–56), oa/ow/oe (~L.57–59), oo/ue/ew (~L.60–63), ie/igh (~L.64–65)</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Strong alignment. Pull the specific vowel team lesson matching the student's breakdown. Each UFLI lesson isolates one pattern with dedicated word lists and a decodable text. Particularly useful for ai vs. ay and ee vs. ea confusions.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Vowel r / R-controlled Vowels<span class="lx-sub">ar, or, er, ir, ur</span></td>
+        <td class="ufli-lesson approx">~L. 69–75</td>
+        <td class="ufli-skill">R-controlled vowel patterns<span class="ufli-sub">ar (~L.69), or (~L.70), er/ir/ur (~L.71–73)</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Strong alignment. UFLI treats each r-controlled pattern in its own lesson. If a student confuses er/ir/ur (all pronounced /er/), pull all three lessons for side-by-side comparison and word sorting.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Diphthongs<span class="lx-sub">oi/oy, ou/ow, au/aw (under vowel combinations)</span></td>
+        <td class="ufli-lesson approx">~L. 76–83</td>
+        <td class="ufli-skill">Diphthongs &amp; other complex vowel patterns<span class="ufli-sub">oi/oy (~L.76–77), ou/ow (~L.78–79), au/aw (~L.80–81)</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Strong alignment. Pull the lesson for the specific diphthong causing breakdown. oi/oy and ou/ow are frequent confusion points. Note that ou/ow can represent multiple sounds — UFLI addresses this with pattern rules.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Complex Consonant Patterns<span class="lx-sub">-tch, -dge; silent letters (kn, wr, mb, ph)</span></td>
+        <td class="ufli-lesson approx">~L. 82–88</td>
+        <td class="ufli-skill">-tch/-dge spelling rules; silent letter combinations<span class="ufli-sub">-tch/-dge (~L.82–83); kn/wr/mb (~L.84–86); ph (~L.87–88)</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Good alignment. UFLI teaches -tch/-dge as position-based spelling rules (after short vowel). Silent letter patterns addressed individually. Use UFLI word sorts for pattern discrimination.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Hard &amp; Soft c and g<span class="lx-sub">ce/ci/cy = /s/; ge/gi/gy = /j/</span></td>
+        <td class="ufli-lesson approx">~L. 84–87</td>
+        <td class="ufli-skill">Soft c and soft g — positional spelling rules<span class="ufli-sub">Before e, i, y: c = /s/, g = /j/</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Good alignment. UFLI covers soft c and g as position-based rules with word lists. Emphasize the "before e, i, y" rule. Word sort (hard vs. soft) is highly effective for this pattern.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Consonant-le Syllable Type<span class="lx-sub">-ble, -tle, -ple, -dle, -fle, -kle, -zle</span></td>
+        <td class="ufli-lesson approx">~L. 91–95</td>
+        <td class="ufli-skill">Consonant + le final syllable<span class="ufli-sub">In multisyllabic word reading section</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">Covered in UFLI's multisyllabic section. Pair with syllable division lessons so students can identify where to split (e.g., sim-ple, ta-ble). Reinforce with word sort by ending (-ble vs. -tle vs. -ple).</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Rules for Syllable Division<span class="lx-sub">VC/CV, V/CV, VCC/CV patterns</span></td>
+        <td class="ufli-lesson approx">~L. 91–96</td>
+        <td class="ufli-skill">Syllable division strategies<span class="ufli-sub">VCCV and VCV splitting rules for multisyllabic decoding</span></td>
+        <td><span class="badge b3">●●●</span></td>
+        <td class="notes">Strong alignment. UFLI teaches explicit syllable division. Have students mark the split on UFLI word cards, then decode each syllable type. Reinforces the why behind long-word breakdown.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Spelling Generalizations &amp; Rules<span class="lx-sub">-ck after short vowel; floss rule; doubling consonants</span></td>
+        <td class="ufli-lesson approx">~L. 19–22, 82–90</td>
+        <td class="ufli-skill">Spelling rules embedded in pattern instruction<span class="ufli-sub">-ck after short vowel (L.~19–22); -tch/-dge (L.~82–83); doubling in suffix section</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">UFLI teaches spelling generalizations as part of each pattern lesson, not as standalone rules. Use UFLI's "why do we spell it this way?" discussion and comparison charts for the most common rules students encounter.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-PH">PH</span></td>
+        <td class="lx-skill">Irregular Plurals &amp; Verbs<span class="lx-sub">feet, mice, went, said, etc.</span></td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Irregular morphology is not addressed in UFLI Foundations. Use explicit grammar/morphology instruction and sight-word style practice for the most common irregular forms.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-SA">SA</span></td>
+        <td class="lx-skill">Simple Suffixes<span class="lx-sub">-s, -es, -ed, -ing, -er, -est (inflectional)</span></td>
+        <td class="ufli-lesson approx">~L. 93–98</td>
+        <td class="ufli-skill">Inflectional suffix decoding &amp; encoding<span class="ufli-sub">-ed, -ing, -s/-es, -er, -est with base words and spelling rules</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">UFLI covers inflectional endings with attention to spelling rules (1-1-1 doubling, drop-e, change y). When a student miscodes an ending, pair with the corresponding spelling rule lesson.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-SA">SA</span></td>
+        <td class="lx-skill">Prefixes<span class="lx-sub">un-, re- (basic derivational)</span></td>
+        <td class="ufli-lesson approx">~L. 97–100</td>
+        <td class="ufli-skill">Basic prefix introduction<span class="ufli-sub">un-, re-, pre-, dis- with meaning</span></td>
+        <td><span class="badge b1">●○○</span></td>
+        <td class="notes">UFLI introduces a small set of high-frequency prefixes in the final lessons. For deeper prefix work or additional prefixes, supplement with explicit morphology instruction.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-FL">FL</span></td>
+        <td class="lx-skill">Timed Silent Reading (Paragraph Level) · Modeled Prosody</td>
+        <td class="ufli-lesson">Decodable readers (all levels)</td>
+        <td class="ufli-skill">Connected decodable text reading<span class="ufli-sub">UFLI decodable readers matched to each lesson's phonics scope</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">UFLI decodable readers provide connected text practice for building automaticity. For prosody specifically, use repeated reading with explicit teacher modeling — this is beyond the UFLI lesson structure itself.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 10–12</td>
+        <td><span class="strand s-VC">VC</span></td>
+        <td class="lx-skill">Synonyms &amp; Antonyms · Similes &amp; Metaphors · Parts of Speech</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>No UFLI equivalent. Use explicit word relationship activities, figurative language study, and vocabulary routines from a dedicated program.</td>
+      </tr>
+
+      <!-- ══ LEVELS 13–15: GRADE 3 ══ -->
+      <tr class="band band-g3">
+        <td colspan="7">LEVELS 13–15 &nbsp;&middot;&nbsp; Grade 3 &nbsp;&middot;&nbsp; <em>The Indian Rainforest &middot; A Japanese Garden &middot; A Journey Through China</em></td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 13–15</td>
+        <td><span class="strand s-SA">SA</span></td>
+        <td class="lx-skill">Prefix &amp; Suffix Meanings<span class="lx-sub">Derivational affixes</span></td>
+        <td class="ufli-lesson approx">~L. 97–100 (basic only)</td>
+        <td class="ufli-skill">Basic affix meanings<span class="ufli-sub">un- (not), re- (again), -ful, -less, -ness — small set covered</span></td>
+        <td><span class="badge b1">●○○</span></td>
+        <td class="notes"><span class="tag tag-ver">Verify</span>UFLI Foundations ends with a small set of high-frequency affixes. Derivational morphology at Grade 3+ requires significant supplementation. Consider morpheme-based word study (Words Their Way, Vocabulary Through Morphemes).</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 13–15</td>
+        <td><span class="strand s-SA">SA</span></td>
+        <td class="lx-skill">Spelling Rules for Adding Affixes<span class="lx-sub">1-1-1 doubling, drop-e, change y to i</span></td>
+        <td class="ufli-lesson approx">~L. 93–100</td>
+        <td class="ufli-skill">Affix spelling rules for inflectional endings<span class="ufli-sub">Doubling, drop-e, and y→i rules covered in suffix section</span></td>
+        <td><span class="badge b2">●●○</span></td>
+        <td class="notes">UFLI covers spelling rules for adding inflectional suffixes (~L.93–98). Derivational suffix spelling rules (e.g., -tion, -sion, -ous) require supplementation beyond UFLI's scope.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 13–15</td>
+        <td><span class="strand s-SA">SA</span></td>
+        <td class="lx-skill">Word Analysis Strategies · Morphological Awareness · Context Clues</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">Beyond UFLI Foundations scope</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Morphological analysis strategies and context clue use are beyond UFLI Foundations. At this level, transition to morphology-focused resources (Words Their Way Within Word, Wilson Word Study, or structured word inquiry).</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 13–15</td>
+        <td><span class="strand s-FL">FL</span></td>
+        <td class="lx-skill">Rhyme Scheme · Intonation, Stress &amp; Phrasing · Prosody</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Fluency prosody at this level is not addressed in UFLI. Use Readers Theater, phrase-cued reading, or repeated reading with teacher modeling and explicit feedback on expression.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 13–15</td>
+        <td><span class="strand s-VC">VC</span></td>
+        <td class="lx-skill">Idioms · Analogies · Academic Vocabulary · Word Relationships · Connectives</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>All vocabulary instruction at this level requires dedicated resources. No UFLI equivalent for figurative language, academic vocabulary tiers, analogical reasoning, or discourse connectives.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 13–15</td>
+        <td><span class="strand s-CP">CP</span></td>
+        <td class="lx-skill">Higher-Order Comprehension · Knowledge Building · Text Integration · Grammar for Comprehension</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Comprehension strategy instruction at this level is entirely outside UFLI's scope. Use structured literacy-aligned comprehension programs, close reading routines, or text-based discussion frameworks.</td>
+      </tr>
+
+      <!-- ══ LEVELS 16–18: GRADE 4 ══ -->
+      <tr class="band band-g4">
+        <td colspan="7">LEVELS 16–18 &nbsp;&middot;&nbsp; Grade 4 &nbsp;&middot;&nbsp; <em>The Great Barrier Reef &middot; A Hawaiian Paradise &middot; A Mexican Valley</em></td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 16–18</td>
+        <td><span class="strand s-SA">SA</span></td>
+        <td class="lx-skill">Root, Prefix &amp; Suffix Meanings<span class="lx-sub">Latin roots; derivational affixes</span></td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">Beyond UFLI Foundations scope</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Latin root instruction is beyond UFLI Foundations. Use Word Roots (Critical Thinking Co.), Vocabulary Through Morphemes, or structured word inquiry. Morpheme matrices are highly effective at this level.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 16–18</td>
+        <td><span class="strand s-SA">SA</span></td>
+        <td class="lx-skill">Spelling Rules for Adding Affixes · Morphological Awareness · Context Clues</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">Beyond UFLI Foundations scope</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>UFLI Foundations does not extend to Grade 4 morphological analysis. Morpheme-based word study programs are the appropriate resource at this level.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 16–18</td>
+        <td><span class="strand s-VC">VC</span></td>
+        <td class="lx-skill">Multiple Meaning Words · Idioms · Academic Vocabulary · Word Relationships</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>No UFLI equivalent at Grade 4+ vocabulary level. Dedicated vocabulary instruction programs required for all skills in this strand.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 16–18</td>
+        <td><span class="strand s-CP">CP</span></td>
+        <td class="lx-skill">Comprehension across Genres · Grammar Concepts · Pronoun Reference · Signal Words</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Entirely outside UFLI scope. Comprehension and grammar instruction at this level requires dedicated literacy programs.</td>
+      </tr>
+
+      <!-- ══ LEVELS 19–21: GRADE 5 ══ -->
+      <tr class="band band-g5">
+        <td colspan="7">LEVELS 19–21 &nbsp;&middot;&nbsp; Grade 5 &nbsp;&middot;&nbsp; <em>The Southwest, USA &middot; The Ancient Greek Countryside &middot; Mesopotamia: Land Between Two Rivers</em></td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 19–21</td>
+        <td><span class="strand s-SA">SA</span></td>
+        <td class="lx-skill">Accent Placement<span class="lx-sub">Stress in multisyllabic words</span></td>
+        <td class="ufli-lesson approx">~L. 91–96</td>
+        <td class="ufli-skill">Multisyllabic word reading<span class="ufli-sub">Syllable stress implicitly practiced; not explicitly taught</span></td>
+        <td><span class="badge b1">●○○</span></td>
+        <td class="notes"><span class="tag tag-ver">Verify</span>UFLI's multisyllabic section builds syllable division but doesn't explicitly teach stress/accent rules. Supplement with explicit instruction on primary vs. secondary stress and dictionary accent marks.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 19–21</td>
+        <td><span class="strand s-SA">SA</span></td>
+        <td class="lx-skill">Greek Combining Forms<span class="lx-sub">bio-, geo-, -ology, -graph, -phone, etc.</span></td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">Beyond UFLI Foundations scope</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Greek combining forms are entirely beyond UFLI Foundations. Use dedicated Greek/Latin roots curriculum or structured word inquiry at this level.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 19–21</td>
+        <td><span class="strand s-SA">SA</span></td>
+        <td class="lx-skill">Prefix &amp; Suffix Meanings (advanced)<span class="lx-sub">Derivational morphology at Grade 5</span></td>
+        <td class="ufli-lesson approx">~L. 97–100 (basic only)</td>
+        <td class="ufli-skill">Basic affix meanings only<span class="ufli-sub">UFLI covers a small foundational set; advanced requires supplement</span></td>
+        <td><span class="badge b1">●○○</span></td>
+        <td class="notes">UFLI's final lessons introduce a small set of affixes. Advanced derivational morphology at Grade 5 requires a dedicated morphology curriculum. UFLI is a starting point only.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 19–21</td>
+        <td><span class="strand s-VC">VC</span></td>
+        <td class="lx-skill">Shades of Meaning · Advanced Analogies · Academic Vocabulary · Word Relationships</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Grade 5 vocabulary skills are entirely outside UFLI's scope. Use vocabulary-specific programs and academic language instruction for all skills in this strand.</td>
+      </tr>
+      <tr class="row">
+        <td class="level-cell">Levels 19–21</td>
+        <td><span class="strand s-CP">CP</span></td>
+        <td class="lx-skill">Connection &amp; Integration across Texts · Application of Higher-Order Skills</td>
+        <td class="ufli-none">—</td>
+        <td class="ufli-none">No UFLI equivalent</td>
+        <td><span class="badge b0">&nbsp;—&nbsp;</span></td>
+        <td class="notes"><span class="tag tag-sup">Supplement</span>Entirely outside UFLI scope. Advanced comprehension and text integration require dedicated literacy programs.</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

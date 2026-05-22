@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation Library — Radical Reading Co.</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.doc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.doc-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.doc-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.doc-card h3 {
+  margin-bottom: 8px;
+  color: var(--dark-azure);
+}
+
+.doc-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 12px;
+}
+
+.doc-date {
+  font-size: 12px;
+  color: #999;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--jade-shell) 0%, #0c6b5e 100%);
+  color: white;
+  border: none;
+}
+
+.featured h3 {
+  color: white;
+}
+
+.featured p {
+  color: rgba(255,255,255,0.85);
+}
+
+.featured .doc-date {
+  color: rgba(255,255,255,0.5);
+  border-top-color: rgba(255,255,255,0.1);
+}
+
+.archived {
+  opacity: 0.7;
+}
+
+.archived .doc-card {
+  background: var(--cream-dark);
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <div class="brand-mark"><img src="Radical Reading Logo Horiz on Dark.png" alt="Radical Reading Co."></div>
+    </div>
+    <p class="header-eyebrow">Resource Library</p>
+    <h1>Documentation &amp; Brand Resources</h1>
+    <p class="header-sub">Complete guide to Radical Reading brand strategy, clinical positioning, and communication frameworks. All resources use unified branding and the latest brand guidelines.</p>
+  </div>
+</div>
+
+<main>
+
+  <div class="section">
+    <h2>About This Library</h2>
+    <p>This documentation library contains the definitive brand strategy, pitch frameworks, and communication guidelines for Radical Reading Co. All documents use the unified stylesheet (styles.css) and follow the Brand Color Palette V3.1 system.</p>
+    <p>For questions about any document, or to contribute updates, contact the team. These are living documents that evolve as our understanding grows.</p>
+  </div>
+
+  <h2 style="margin-top: 48px;">Featured Documents</h2>
+
+  <div class="doc-grid">
+
+    <a href="brand-color-palette-v3.1.html" class="doc-card featured">
+      <div class="doc-icon">🎨</div>
+      <h3>Brand Color Palette v3.1</h3>
+      <p>Complete colour system documentation. All palette decisions, adjacency rules, section schemes (S1–S6), usage guidelines, and rationale. The definitive reference for brand colour application.</p>
+      <div class="doc-date">May 22, 2026</div>
+    </a>
+
+  </div>
+
+  <h2 style="margin-top: 48px;">Core Strategy Documents</h2>
+
+  <div class="doc-grid">
+
+    <a href="radical-reading-brand-vision-lark_1.html" class="doc-card">
+      <div class="doc-icon">✦</div>
+      <h3>Brand Vision &amp; Voice — Lark Barker</h3>
+      <p>Who Lark is, what she brings to Radical Reading, and the voice we use to communicate. Includes the Expert Sister positioning, brand values (dos &amp; don'ts), and voice examples in different registers.</p>
+      <div class="doc-date">May 22, 2026</div>
+    </a>
+
+    <a href="radical-reading-pitch-framework-v1.3.html" class="doc-card">
+      <div class="doc-icon">📋</div>
+      <h3>Definitive Pitch Framework v1.3</h3>
+      <p>Complete argumentation structure for parent conversations. The Five Moments (P1–P5), track-specific messaging for IGNITE/SURGE/BRIDGE/REWIRE, objection handling, and clinical positioning guidelines.</p>
+      <div class="doc-date">May 22, 2026</div>
+    </a>
+
+    <a href="radical-reading-social-playbook_3.html" class="doc-card">
+      <div class="doc-icon">📱</div>
+      <h3>Social Media Playbook</h3>
+      <p>Community and conversation strategy. Content pillars, platform-specific approaches (LinkedIn, Instagram, Facebook, TikTok), messaging framework, what we don't do, tone guidelines, and frequency strategy.</p>
+      <div class="doc-date">May 22, 2026</div>
+    </a>
+
+    <a href="summer-surge-channel-strategy.html" class="doc-card">
+      <div class="doc-icon">☀️</div>
+      <h3>Summer SURGE Channel Strategy</h3>
+      <p>Multi-channel playbook for SURGE program acquisition (June–August). Email segmentation, social strategy, web landing pages, paid media approach, and conversion milestones for peak enrollment window.</p>
+      <div class="doc-date">May 22, 2026</div>
+    </a>
+
+  </div>
+
+  <h2 style="margin-top: 48px;">Archive</h2>
+
+  <div class="doc-grid archived">
+
+    <a href="radical-reading-pitch-framework.html" class="doc-card">
+      <div class="doc-icon">📋</div>
+      <h3>Pitch Framework (Previous Version)</h3>
+      <p>Earlier version of the pitch framework. Superseded by v1.3. Retained for historical reference.</p>
+      <div class="doc-date">Reference Only</div>
+    </a>
+
+  </div>
+
+  <div class="section" style="margin-top: 56px; padding-top: 48px; border-top: 1px solid var(--border);">
+    <h2>About the Unified Stylesheet</h2>
+    <p>All documents in this library share a single stylesheet: <code>styles.css</code>. This ensures consistent typography, color usage, spacing, and responsive behavior across all brand documentation.</p>
+    
+    <h3>Font Stack</h3>
+    <ul>
+      <li><strong>Headlines:</strong> Zilla Slab Medium (tighter letter-spacing over 20px, wider when larger)</li>
+      <li><strong>Subheads &amp; Accents:</strong> Dosis Semibold/Medium</li>
+      <li><strong>Body Text:</strong> Outfit Regular</li>
+    </ul>
+
+    <h3>Color System</h3>
+    <p>All colours follow Brand Color Palette V3.1. See the dedicated colour palette document for complete guidance on gold system, section schemes, adjacency rules, and usage patterns.</p>
+
+    <h3>Structure</h3>
+    <p>Every page includes: consistent header with brand identity, "Back to Index" navigation, main content area with semantic structure, and footer with last-updated date.</p>
+  </div>
+
+  <div class="section">
+    <h2>Adding New Documents</h2>
+    <p>When creating new brand documentation:</p>
+    <ul>
+      <li><strong>Link to styles.css</strong> in the head: <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></li>
+      <li><strong>Use the standard header structure</strong> with brand row, eyebrow, h1, and description</li>
+      <li><strong>Add a "Back to Index" link</strong> near the top</li>
+      <li><strong>Use semantic HTML:</strong> <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, etc.</li>
+      <li><strong>Follow colour guidance</strong> from the palette document</li>
+      <li><strong>Add a footer</strong> with document title and last-updated date</li>
+      <li><strong>Update this index</strong> with a link to the new document</li>
+    </ul>
+  </div>
+
+</main>
+
+<div class="footer">
+  <p>Documentation Library — Radical Reading Co.</p>
+  <p>Last updated: May 22, 2026</p>
+</div>
+
+</body>
+</html>
